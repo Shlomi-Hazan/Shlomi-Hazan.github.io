@@ -5,6 +5,9 @@ const languageToggle = document.getElementById("languageToggle");
 const menuToggle = document.getElementById("menuToggle");
 const popupMenu = document.getElementById("popupMenu");
 
+const resumeViewLink = document.getElementById("resumeViewLink");
+const resumeDownloadLink = document.getElementById("resumeDownloadLink");
+
 /* =========================================================
    Theme Toggle
    ========================================================= */
@@ -40,6 +43,7 @@ function applyLanguageMode(language) {
   }
 
   translatePage(language);
+  updateResumeLinks(language);
 }
 
 function translatePage(language) {
@@ -52,6 +56,24 @@ function translatePage(language) {
       ? element.dataset.heHtml
       : element.dataset.enHtml;
   });
+}
+
+function updateResumeLinks(language) {
+  if (!resumeViewLink || !resumeDownloadLink) return;
+
+  const isHebrew = language === "he";
+
+  const resumePath = isHebrew
+    ? "assets/resume-he.pdf"
+    : "assets/resume-en.pdf";
+
+  const downloadName = isHebrew
+    ? "Shlomi-Hazan-Resume-Hebrew.pdf"
+    : "Shlomi-Hazan-Resume-English.pdf";
+
+  resumeViewLink.href = resumePath;
+  resumeDownloadLink.href = resumePath;
+  resumeDownloadLink.setAttribute("download", downloadName);
 }
 
 applyLanguageMode(savedLanguage);
