@@ -1,21 +1,93 @@
-const themeToggle = document.getElementById("themeToggle");
 const body = document.body;
+
+const themeToggle = document.getElementById("themeToggle");
+const languageToggle = document.getElementById("languageToggle");
+const menuToggle = document.getElementById("menuToggle");
+const popupMenu = document.getElementById("popupMenu");
+
+/* =========================================================
+   Theme Toggle
+   ========================================================= */
 
 const savedTheme = localStorage.getItem("theme");
 
-if (savedTheme === "light") {
-  body.classList.add("light-theme");
-  themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+if (savedTheme === "dark") {
+  body.classList.add("dark-theme");
 }
 
-themeToggle.addEventListener("click", () => {
-  body.classList.toggle("light-theme");
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    body.classList.toggle("dark-theme");
 
-  const isLight = body.classList.contains("light-theme");
+    const isDark = body.classList.contains("dark-theme");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+}
 
-  localStorage.setItem("theme", isLight ? "light" : "dark");
+/* =========================================================
+   Language Toggle
+   ========================================================= */
 
-  themeToggle.innerHTML = isLight
-    ? '<i class="fa-solid fa-sun"></i>'
-    : '<i class="fa-solid fa-moon"></i>';
-});
+const savedLanguage = localStorage.getItem("language") || "en";
+
+function applyLanguageMode(language) {
+  if (language === "he") {
+    body.classList.add("he-mode");
+    document.documentElement.lang = "he";
+  } else {
+    body.classList.remove("he-mode");
+    document.documentElement.lang = "en";
+  }
+
+  translatePage(language);
+}
+
+function translatePage(language) {
+  document.querySelectorAll("[data-en][data-he]").forEach((element) => {
+    element.textContent = element.dataset[language];
+  });
+
+  document.querySelectorAll("[data-en-html][data-he-html]").forEach((element) => {
+    element.innerHTML = language === "he"
+      ? element.dataset.heHtml
+      : element.dataset.enHtml;
+  });
+}
+
+applyLanguageMode(savedLanguage);
+
+if (languageToggle) {
+  languageToggle.addEventListener("click", () => {
+    const isCurrentlyHebrew = body.classList.contains("he-mode");
+    const newLanguage = isCurrentlyHebrew ? "en" : "he";
+
+    localStorage.setItem("language", newLanguage);
+    applyLanguageMode(newLanguage);
+  });
+}
+
+/* =========================================================
+   Popup Menu
+   ========================================================= */
+
+if (menuToggle && popupMenu) {
+  menuToggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    popupMenu.classList.toggle("open");
+  });
+
+  popupMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      popupMenu.classList.remove("open");
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    const clickedInsideMenu = popupMenu.contains(event.target);
+    const clickedMenuButton = menuToggle.contains(event.target);
+
+    if (!clickedInsideMenu && !clickedMenuButton) {
+      popupMenu.classList.remove("open");
+    }
+  });
+}

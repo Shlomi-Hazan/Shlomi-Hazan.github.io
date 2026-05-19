@@ -13,57 +13,130 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   />
+
+  <!-- Elegant serif font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <!-- Navbar -->
   <header class="navbar">
-    <div class="logo">SH</div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+      <span class="toggle-track">
+        <span class="theme-icon moon-icon">
+          <i class="fa-solid fa-moon"></i>
+        </span>
 
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
+        <span class="toggle-thumb"></span>
 
-    <button class="theme-toggle" id="themeToggle">
-      <i class="fa-solid fa-moon"></i>
+        <span class="theme-icon sun-icon">
+          <i class="fa-solid fa-sun"></i>
+        </span>
+      </span>
     </button>
+
+    <a href="#" class="logo" aria-label="Back to top">SH</a>
+
+    <div class="right-controls">
+      <button class="language-toggle" id="languageToggle" aria-label="Toggle language">
+        <span class="lang-en">EN</span>
+        <span class="lang-divider">/</span>
+        <span class="lang-he">HE</span>
+      </button>
+
+      <div class="menu-wrapper">
+        <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav class="popup-menu" id="popupMenu">
+          <a href="#about" data-en="About" data-he="אודות">About</a>
+          <a href="#projects" data-en="Projects" data-he="פרויקטים">Projects</a>
+          <a href="#skills" data-en="Skills" data-he="כישורים">Skills</a>
+          <a href="#tools" data-en="Tools" data-he="כלים">Tools</a>
+          <a href="#education" data-en="Education" data-he="השכלה">Education</a>
+          <a href="#military" data-en="Military Service" data-he="שירות צבאי">Military Service</a>
+          <a href="#pre-military" data-en="Pre-Military Program" data-he="מכינה קדם־צבאית">Pre-Military Program</a>
+          <a href="#contact" data-en="Contact" data-he="יצירת קשר">Contact</a>
+        </nav>
+      </div>
+    </div>
   </header>
 
   <main>
     <!-- Hero -->
     <section class="hero">
       <div class="hero-content">
-        <p class="eyebrow">Computer Science Student</p>
+        <p
+          class="eyebrow"
+          data-en="SOFTWARE DEVELOPER | COMPUTER SCIENCE STUDENT"
+          data-he="מפתח תוכנה | סטודנט למדעי המחשב"
+        >
+          SOFTWARE DEVELOPER | COMPUTER SCIENCE STUDENT
+        </p>
 
         <h1>
-          Hi, I'm <span>Shlomi Hazan</span>
+          <span
+            class="hero-intro"
+            data-en="Hi, I'm"
+            data-he="היי, אני"
+          >
+            Hi, I'm
+          </span>
+
+          <span
+            class="hero-name"
+            data-en="Shlomi Hazan"
+            data-he="שלומי חזן"
+          >
+            Shlomi Hazan
+          </span>
         </h1>
 
-        <p class="hero-text">
-          A Computer Science student passionate about software development,
-          problem solving, mobile apps, networking, and building practical projects.
+        <p
+          class="hero-text"
+          data-en="I’m a Computer Science student who enjoys building practical, thoughtful, and user-friendly software. I focus on turning ideas into real projects, learning deeply, and creating products that feel clean, useful, and reliable."
+          data-he="אני סטודנט למדעי המחשב שאוהב לבנות תוכנה פרקטית, מחושבת וידידותית למשתמש. אני מתמקד בהפיכת רעיונות לפרויקטים אמיתיים, בלמידה מעמיקה, וביצירת מוצרים נקיים, שימושיים ואמינים."
+        >
+          I’m a Computer Science student who enjoys building practical, thoughtful,
+          and user-friendly software. I focus on turning ideas into real projects,
+          learning deeply, and creating products that feel clean, useful, and reliable.
         </p>
 
         <div class="hero-actions">
-          <a href="#projects" class="btn primary">View Projects</a>
+          <a href="#projects" class="btn primary">
+            <i class="fa-solid fa-layer-group"></i>
+            <span data-en="View Projects" data-he="צפייה בפרויקטים">View Projects</span>
+          </a>
+
+          <a href="assets/Shlomi_Hazan_CV.pdf" class="btn secondary" target="_blank">
+            <i class="fa-solid fa-eye"></i>
+            <span data-en="View Resume" data-he="צפייה בקורות חיים">View Resume</span>
+          </a>
+
           <a href="assets/Shlomi_Hazan_CV.pdf" class="btn secondary" download>
-            Download CV
+            <i class="fa-solid fa-download"></i>
+            <span data-en="Download Resume" data-he="הורדת קורות חיים">Download Resume</span>
           </a>
         </div>
 
         <div class="social-links">
-          <a href="https://github.com/Shlomi-Hazan" target="_blank">
+          <a href="https://github.com/Shlomi-Hazan" target="_blank" aria-label="GitHub profile">
             <i class="fa-brands fa-github"></i>
           </a>
 
-          <a href="https://www.linkedin.com/in/shlomi-hazan-in/?lipi=urn%3Ali%3Apage%3Ap_mwlite_people_connections%3BlGSnQE9XSZ6mctiMN0MPgQ%3D%3D" target="_blank">
+          <a href="https://www.linkedin.com/in/shlomi-hazan-in" target="_blank" aria-label="LinkedIn profile">
             <i class="fa-brands fa-linkedin"></i>
           </a>
 
-          <a href="mailto:shlomih2806@gmail.com">
+          <a href="mailto:shlomih2806@gmail.com" aria-label="Send email">
             <i class="fa-solid fa-envelope"></i>
           </a>
         </div>
@@ -71,15 +144,16 @@
 
       <div class="hero-card">
         <div class="profile-circle">
-          <span>SH</span>
+          <img src="assets/profile.jpg" alt="Shlomi Hazan profile photo" />
         </div>
 
-        <h2>Junior Software Developer</h2>
-        <p>Swift · C++ · Python · SQL · Git</p>
+        <h2 data-en="Software Developer" data-he="מפתח תוכנה">Software Developer</h2>
+
+        <p>Swift · C · C++ · Python · SQL · Git</p>
 
         <div class="status-badge">
           <span></span>
-          Open to opportunities
+          <span data-en="Open to opportunities" data-he="פתוח להזדמנויות">Open to opportunities</span>
         </div>
       </div>
     </section>
@@ -87,16 +161,23 @@
     <!-- About -->
     <section id="about" class="section">
       <div class="section-title">
-        <p>About Me</p>
-        <h2>Who I Am</h2>
+        <p data-en="About Me" data-he="אודותיי">About Me</p>
+        <h2 data-en="Who I Am" data-he="מי אני">Who I Am</h2>
       </div>
 
       <div class="glass-card">
-        <p>
-          I am a Computer Science student with hands-on experience in academic
-          and personal software projects. I enjoy turning ideas into real,
-          usable products, learning new technologies, and improving my coding
-          skills through practical development.
+        <p
+          data-en-html="I am a highly motivated Computer Science student at HIT with a strong foundation in software development, problem-solving, and hands-on experience in both academic and personal projects. <br> As a former combat team commander, I bring proven leadership, teamwork, and the ability to thrive under pressure. <br> I am passionate about learning new technologies, turning innovative ideas into real-world products, and continually advancing my skills to make a meaningful impact as a software developer."
+          data-he-html="סטודנט למדעי המחשב ב-HIT, בעל בסיס חזק בפיתוח תוכנה, פתרון בעיות וניסיון מעשי בפרויקטים אקדמיים ואישיים.<br> מפקד צוות לוחמים לשעבר, המביא עמו מנהיגות מוכחת, יכולת עבודת צוות גבוהה ותפקוד מצוין תחת לחץ. <br>בעל מוטיבציה גבוהה ותשוקה ללמידת טכנולוגיות חדשות, במטרה להפוך רעיונות חדשניים למוצרים משפיעים, להתפתח כמפתח תוכנה ולתרום לפרויקטים טכנולוגיים בעולם האמיתי."
+        >
+          I am a highly motivated Computer Science student at HIT with a strong
+          foundation in software development, problem-solving, and hands-on experience
+          in both academic and personal projects. <br>
+          As a former combat team commander, I bring proven leadership,
+          teamwork, and the ability to thrive under pressure. <br>
+          I am passionate about learning new technologies, turning innovative ideas
+          into real-world products, and continually advancing my skills to make a
+          meaningful impact as a software developer.
         </p>
       </div>
     </section>
@@ -104,8 +185,8 @@
     <!-- Projects -->
     <section id="projects" class="section">
       <div class="section-title">
-        <p>Projects</p>
-        <h2>Selected Work</h2>
+        <p data-en="Projects" data-he="פרויקטים">Projects</p>
+        <h2 data-en="Selected Works" data-he="עבודות נבחרות">Selected Works</h2>
       </div>
 
       <div class="projects-grid">
@@ -115,7 +196,11 @@
           </div>
 
           <h3>DogNeeds</h3>
-          <p>
+
+          <p
+            data-en="A SwiftUI iOS application for managing dog care, family sharing, emergency contacts, walks, updates, reminders, and more."
+            data-he="אפליקציית iOS ב־SwiftUI לניהול טיפול בכלב, שיתוף משפחתי, אנשי קשר לחירום, טיולים, עדכונים, תזכורות ועוד."
+          >
             A SwiftUI iOS application for managing dog care, family sharing,
             emergency contacts, walks, updates, reminders, and more.
           </p>
@@ -126,7 +211,10 @@
             <span>AppState</span>
           </div>
 
-          <a href="#" class="project-link">View Project</a>
+          <span class="project-status">
+            <i class="fa-solid fa-spinner"></i>
+            <span data-en="In Progress" data-he="בפיתוח">In Progress</span>
+          </span>
         </article>
 
         <article class="project-card">
@@ -135,7 +223,11 @@
           </div>
 
           <h3>Botchat</h3>
-          <p>
+
+          <p
+            data-en="A Python TCP/IP networking project combining packet analysis, client-server architecture, raw sockets, and a real-time chat app."
+            data-he="פרויקט רשתות תקשורת ב־Python המשלב ניתוח חבילות, ארכיטקטורת Client-Server, עבודה עם Raw Sockets ואפליקציית צ׳אט בזמן אמת."
+          >
             A Python TCP/IP networking project combining packet analysis,
             client-server architecture, raw sockets, and a real-time chat app.
           </p>
@@ -147,7 +239,8 @@
           </div>
 
           <a href="https://github.com/Shlomi-Hazan/Chat-Bot-" target="_blank" class="project-link">
-            View Project
+            <i class="fa-solid fa-eye"></i>
+            <span data-en="View Project" data-he="צפייה בפרויקט">View Project</span>
           </a>
         </article>
 
@@ -157,7 +250,11 @@
           </div>
 
           <h3>AI vs Real Images ML Project</h3>
-          <p>
+
+          <p
+            data-en="Machine Learning project for classifying AI-generated and real images using KNN from scratch and feature engineering."
+            data-he="פרויקט Machine Learning לסיווג תמונות אמיתיות לעומת תמונות שנוצרו על ידי AI, תוך שימוש ב־KNN שנבנה מאפס וב־Feature Engineering."
+          >
             Machine Learning project for classifying AI-generated and real
             images using KNN from scratch and feature engineering.
           </p>
@@ -169,7 +266,8 @@
           </div>
 
           <a href="https://github.com/Shlomi-Hazan/AI-vs-Real-Images-ML-Project" target="_blank" class="project-link">
-            View Project
+            <i class="fa-solid fa-eye"></i>
+            <span data-en="View Project" data-he="צפייה בפרויקט">View Project</span>
           </a>
         </article>
       </div>
@@ -178,66 +276,326 @@
     <!-- Skills -->
     <section id="skills" class="section">
       <div class="section-title">
-        <p>Skills</p>
-        <h2>Technologies I Work With</h2>
+        <p data-en="Skills" data-he="כישורים">Skills</p>
+        <h2 data-en="Technologies I Work With" data-he="טכנולוגיות שאני עובד איתן">Technologies I Work With</h2>
       </div>
 
       <div class="skills-grid">
         <div class="skill">C</div>
-        <div class="skill">C++</div>
+        <div class="skill" data-en="C++" data-he="++C">C++</div>
         <div class="skill">Python</div>
         <div class="skill">Swift</div>
         <div class="skill">SwiftUI</div>
         <div class="skill">SQL</div>
         <div class="skill">Git</div>
         <div class="skill">GitHub</div>
-        <div class="skill">Networking</div>
-        <div class="skill">Algorithms</div>
-        <div class="skill">Data Structures</div>
-        <div class="skill">Object-Oriented Programming</div>
+        <div class="skill" data-en="Networking" data-he="רשתות תקשורת">Networking</div>
+        <div class="skill" data-en="Algorithms" data-he="אלגוריתמים">Algorithms</div>
+        <div class="skill" data-en="Data Structures" data-he="מבני נתונים">Data Structures</div>
+        <div class="skill" data-en="Object-Oriented Programming" data-he="תכנות מונחה עצמים">Object-Oriented Programming</div>
+      </div>
+    </section>
+
+    <!-- Development Environment -->
+    <section id="tools" class="section">
+      <div class="section-title">
+        <p data-en="Development Environment" data-he="סביבות עבודה">Development Environment</p>
+        <h2 data-en="Tools I Work With" data-he="כלים שאני משתמש בהם">Tools I Work With</h2>
+      </div>
+
+      <div class="tools-grid">
+        <div class="tool-card">
+          <i class="fa-brands fa-apple"></i>
+          <h3>Xcode</h3>
+          <p
+            data-en="iOS development, Swift, SwiftUI, previews, and app debugging."
+            data-he="פיתוח iOS, עבודה עם Swift ו־SwiftUI, תצוגות מקדימות ודיבוג אפליקציות."
+          >
+            iOS development, Swift, SwiftUI, previews, and app debugging.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <i class="fa-solid fa-code"></i>
+          <h3>VS Code</h3>
+          <p
+            data-en="Web development, Python / C / C++ projects, Git workflow, and quick editing."
+            data-he="פיתוח Web, פרויקטים ב- Phython / C++ / C , עבודה עם Git ועריכת קוד מהירה."
+          >
+            Web development, Python / C / C++ projects, Git workflow, and quick editing.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <i class="fa-brands fa-github"></i>
+          <h3>GitHub</h3>
+          <p
+            data-en="Version control, repositories, project documentation, and GitHub Pages."
+            data-he="ניהול גרסאות, רפוזיטוריז, תיעוד פרויקטים ו־GitHub Pages."
+          >
+            Version control, repositories, project documentation, and GitHub Pages.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <i class="fa-solid fa-terminal"></i>
+          <h3>Terminal</h3>
+          <p
+            data-en="Git commands, project setup, scripts, and development workflows."
+            data-he="פקודות Git, הקמת פרויקטים, סקריפטים ותהליכי עבודה בפיתוח."
+          >
+            Git commands, project setup, scripts, and development workflows.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <i class="fa-solid fa-network-wired"></i>
+          <h3>Wireshark</h3>
+          <p
+            data-en="Network traffic analysis, packet inspection, and TCP/IP learning."
+            data-he="ניתוח תעבורת רשת, בדיקת חבילות ולמידה מעשית של TCP/IP."
+          >
+            Network traffic analysis, packet inspection, and TCP/IP learning.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <i class="fa-solid fa-database"></i>
+          <h3>SQL Tools</h3>
+          <p
+            data-en="Database queries, relational data modeling, and academic exercises."
+            data-he="שאילתות בסיסי נתונים, מידול נתונים רלציוני ותרגול אקדמי."
+          >
+            Database queries, relational data modeling, and academic exercises.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- Education -->
     <section id="education" class="section">
       <div class="section-title">
-        <p>Education</p>
-        <h2>Academic Background</h2>
+        <p data-en="Education" data-he="השכלה">Education</p>
+        <h2 data-en="Academic Background" data-he="רקע אקדמי">Academic Background</h2>
       </div>
 
       <div class="timeline">
         <div class="timeline-item">
           <span class="timeline-dot"></span>
 
-          <div class="glass-card">
-            <h3>B.Sc. Computer Science</h3>
-            <p>Holon Institute of Technology — HIT</p>
-            <small>Computer Science student</small>
+          <div class="glass-card education-card">
+            <span
+              class="education-year"
+              data-en="Current - Honors Program"
+              data-he="כיום - תוכנית מצטיינים"
+            >
+              Current - Honors Program
+            </span>
+
+            <h3 data-en="B.Sc. Computer Science" data-he="תואר ראשון במדעי המחשב">B.Sc. Computer Science</h3>
+
+            <p
+              data-en="HIT - Holon Institute of Technology"
+              data-he="HIT - המכון הטכנולוגי חולון"
+            >
+              HIT - Holon Institute of Technology
+            </p>
+
+            <small
+              data-en="2024 - Expected 2027"
+              data-he="2024 - צפי 2027"
+            >
+              2024 - Expected 2027
+            </small>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+
+          <div class="glass-card education-card">
+            <span
+              class="education-year"
+              data-en="Accepted - Accelerated Track"
+              data-he="התקבלתי - מסלול מואץ"
+            >
+              Accepted - Accelerated Track
+            </span>
+
+            <h3 data-en="M.Sc. Computer Science" data-he="תואר שני במדעי המחשב">M.Sc. Computer Science</h3>
+
+            <p
+              data-en="HIT - Holon Institute of Technology"
+              data-he="HIT - המכון הטכנולוגי חולון"
+            >
+              HIT - Holon Institute of Technology
+            </p>
+
+            <small
+              data-en="Expected 2026 - Expected 2028"
+              data-he="צפי 2026 - צפי 2028"
+            >
+              Expected 2026 - Expected 2028
+            </small>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Military Service -->
+    <section id="military" class="section">
+      <div class="section-title">
+        <p data-en="Military Service" data-he="שירות צבאי">Military Service</p>
+        <h2 data-en="IDF Combat Team Commander" data-he="מפקד צוות לוחמים בצה״ל">IDF Combat Team Commander</h2>
+      </div>
+
+      <article class="experience-card">
+        <div class="experience-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div class="experience-content">
+          <span class="experience-years">2019–2022</span>
+
+          <p
+            class="experience-summary"
+            data-en-html="<b><b>Served as a full combat team commander in the IDF.<br> Led operational teams, trained soldiers, and developed strong leadership, discipline, and decision-making skills under pressure.</b></b>"
+            data-he-html="<b>שירות כמפקד צוות בתותחנים.<br> הובלתי צוותים מבצעיים, הכשרתי לוחמים, ופיתחתי יכולות מנהיגות, משמעת וקבלת החלטות תחת לחץ.</b>"
+          >
+            <b>
+              Served as a full combat team commander in the IDF.<br>
+              Led operational teams, trained soldiers, and developed strong leadership,
+              discipline, and decision-making skills under pressure.
+            </b>
+          </p>
+
+          <ul class="experience-list">
+            <li
+              data-en-html="<b>2022 - </b> Commanded combat soldiers in the Artillery Corps."
+              data-he-html="<b>2022 - </b> מפקד צוות מבצעי בגדוד (קווים מבצעיים ואימונים גדודיים)."
+            >
+              <b>2022 - </b> Commanded combat soldiers in the Artillery Corps.
+            </li>
+
+            <li
+              data-en-html="<b>2021 - </b> Served as a training and preparation commander during operational training.<br> (Backup combatant commander in &quot;Shomer Homot&quot;)"
+              data-he-html="<b>2021 - </b> מפקד טירונים והכשרות (שירות כתגבור במהלך מבצע שומר חומות)."
+            >
+              <b>2021 - </b> Served as a training and preparation commander during operational training.
+              <br> (Backup combatant commander in "Shomer Homot")
+            </li>
+
+            <li
+              data-en-html="<b>2020 → 2021 - </b> Served as an operational combat commander during &quot;Yotze Laor&quot;.<br> (Spent more than three months on the borders of Lebanon)"
+              data-he-html="<b>2021 → 2020 - </b> מפקד מבצעי במבצע יוצא לאור (מעל 3 חודשים בשטח בגבול לבנון)."
+            >
+              <b>2020 → 2021 - </b> Served as an operational combat commander during "Yotze Laor".
+              <br> (Spent more than three months on the borders of Lebanon)
+            </li>
+
+            <li
+              data-en-html="<b>2020 - </b> Completed commanders course."
+              data-he-html="<b>2020 - </b> קורס מפקדים."
+            >
+              <b>2020 - </b> Completed commanders course.
+            </li>
+
+            <li
+              data-en-html="<b>2020 - </b> Served as a combat soldier in the &quot;Reshef&quot; Battalion, Artillery Corps."
+              data-he-html="<b>2020 - </b> חייל לוחם בגדוד רשף חיל תותחנים."
+            >
+              <b>2020 - </b> Served as a combat soldier in the "Reshef" Battalion, Artillery Corps.
+            </li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- Pre-Military Program -->
+    <section id="pre-military" class="section">
+      <div class="section-title">
+        <p data-en="Pre-Military Program" data-he="מכינה קדם־צבאית">Pre-Military Program</p>
+        <h2 data-en="Yitzhak Rabin Leadership Mechina" data-he="מכינת קדם צבאית למנהיגות ע״ש יצחק רבין">Yitzhak Rabin Leadership Mechina</h2>
+      </div>
+
+      <article class="experience-card">
+        <div class="experience-icon">
+          <i class="fa-solid fa-people-group"></i>
+        </div>
+
+        <div class="experience-content">
+          <span class="experience-years">2018–2019</span>
+
+          <p
+            class="experience-summary"
+            data-en-html="<b><b>Participated in a leadership and social involvement program, including community volunteering and logistics management.</b></b>"
+            data-he-html="<b>השתתפות בתכנית מנהיגות ומעורבות חברתית, שכללה התנדבות בקהילה וניהול לוגיסטי.</b>"
+          >
+            <b>
+              Participated in a leadership and social involvement program, including
+              community volunteering and logistics management.
+            </b>
+          </p>
+
+          <ul class="experience-list">
+            <li
+              data-en="Participated in a pre-military leadership program focused on values, social responsibility, leadership, Zionism, Israeli society, and understanding the country."
+              data-he="המכינה בנויה על ערכים ומעורבות חברתית, ניהול ופיקוד, ציונות, חברה וסביבה, כלכלה,
+חלוציות, הכרת ואהבת הארץ ועוד."
+            >
+              Participated in a pre-military leadership program focused on values, social responsibility, leadership, Zionism, Israeli society, and understanding the country.
+            </li>
+
+            <li
+              data-en="Volunteered in the community, including educational work with children and youth at risk, informal education, and social and political involvement."
+              data-he="התנדבתי בקהילה, כולל עבודה חינוכית עם ילדים ונוער בסיכון, חינוך בלתי פורמלי ומעורבות חברתית ופוליטית."
+            >
+              Volunteered in the community, including educational work with children and youth at risk, informal education, and social and political involvement.
+            </li>
+
+            <li
+              data-en="Managed logistics of the Mechina, including route planning, team coordination, transportation, scheduling, budgeting, resource management, and real-time problem-solving."
+              data-he="ניהול לוגיסטי כולל של המכינה, כולל תכנון מסלול, תיאום צוותים, הסעות, לוחות זמנים, תקציב, ניהול משאבים ופתרון בעיות בזמן אמת."
+            >
+              Managed logistics during the annual Mechina journey, including route planning, team coordination, transportation, scheduling, budgeting, resource management, and real-time problem-solving.
+            </li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
     <!-- Contact -->
     <section id="contact" class="section contact-section">
       <div class="section-title">
-        <p>Contact</p>
-        <h2>Let's Connect</h2>
+        <p data-en="Contact" data-he="יצירת קשר">Contact</p>
+        <h2 data-en="Let's Connect" data-he="בואו ניצור קשר">Let's Connect</h2>
       </div>
 
       <div class="contact-card">
-        <p>
+        <p
+          data-en="Feel free to reach out for opportunities, collaborations, or questions about my projects."
+          data-he="מוזמנים לפנות אליי בנוגע להזדמנויות, שיתופי פעולה או שאלות על הפרויקטים שלי."
+        >
           Feel free to reach out for opportunities, collaborations,
           or questions about my projects.
         </p>
 
         <div class="contact-actions">
-          <a href="mailto:shlomih2806@gmail.com" class="btn primary">
-            Send Email
+          <a href="mailto:shlomih2806@gmail.com" class="btn contact-btn email-btn">
+            <i class="fa-solid fa-envelope"></i>
+            <span data-en="Send Email" data-he="שליחת מייל">Send Email</span>
           </a>
 
-          <a href="https://github.com/Shlomi-Hazan" target="_blank" class="btn secondary">
-            GitHub Profile
+          <a href="https://github.com/Shlomi-Hazan" target="_blank" class="btn contact-btn github-btn">
+            <i class="fa-brands fa-github"></i>
+            <span data-en="GitHub Profile" data-he="פרופיל GitHub">GitHub Profile</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/shlomi-hazan-in" target="_blank" class="btn contact-btn linkedin-btn">
+            <i class="fa-brands fa-linkedin"></i>
+            <span data-en="LinkedIn Profile" data-he="פרופיל LinkedIn">LinkedIn Profile</span>
           </a>
         </div>
       </div>
@@ -245,7 +603,12 @@
   </main>
 
   <footer>
-    <p>© 2026 Shlomi Hazan. Built with HTML, CSS & JavaScript.</p>
+    <p
+      data-en="© 2026 Shlomi Hazan. Built with HTML, CSS & JavaScript."
+      data-he="© 2026 Shlomi Hazan. Built with HTML, CSS & JavaScript."
+    >
+      © 2026 Shlomi Hazan. Built with HTML, CSS & JavaScript.
+    </p>
   </footer>
 
   <script src="script.js"></script>

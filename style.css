@@ -1,6 +1,19 @@
+/* =========================================================
+   Shlomi Hazan Portfolio Website
+   Main Stylesheet
+   ========================================================= */
+
+
+/* =========================================================
+   1. Theme Variables
+   ========================================================= */
+
 :root {
   --bg: #f7f1e8;
   --bg-soft: #efe2d0;
+  --page-start: #fbf7f0;
+  --page-end: #efe2d0;
+
   --card: rgba(255, 252, 247, 0.78);
   --card-strong: rgba(255, 252, 247, 0.94);
   --card-border: rgba(92, 64, 43, 0.14);
@@ -13,29 +26,48 @@
   --secondary: #c89b63;
   --accent: #6f8f72;
 
+  --surface: #fffaf3;
+  --surface-soft: rgba(255, 252, 247, 0.72);
+  --grid-line: rgba(92, 64, 43, 0.035);
+
   --shadow: 0 24px 70px rgba(92, 64, 43, 0.16);
+  --shadow-soft: 0 16px 44px rgba(92, 64, 43, 0.12);
+
   --radius-xl: 34px;
   --radius-lg: 24px;
   --radius-md: 18px;
 }
 
-.light-theme {
-  --bg: #f7f1e8;
-  --bg-soft: #efe2d0;
-  --card: rgba(255, 252, 247, 0.78);
-  --card-strong: rgba(255, 252, 247, 0.94);
-  --card-border: rgba(92, 64, 43, 0.14);
+.dark-theme {
+  --bg: #17120f;
+  --bg-soft: #241b16;
+  --page-start: #17120f;
+  --page-end: #241b16;
 
-  --text: #1f1a17;
-  --muted: #6f6257;
+  --card: rgba(42, 32, 26, 0.78);
+  --card-strong: rgba(48, 37, 30, 0.94);
+  --card-border: rgba(255, 232, 205, 0.14);
 
-  --primary: #9a6a3a;
-  --primary-dark: #6f4827;
-  --secondary: #c89b63;
-  --accent: #6f8f72;
+  --text: #fff7ed;
+  --muted: #d6c4b5;
 
-  --shadow: 0 24px 70px rgba(92, 64, 43, 0.16);
+  --primary: #d4a373;
+  --primary-dark: #f1c89b;
+  --secondary: #b88a5d;
+  --accent: #9fbd9f;
+
+  --surface: #241b16;
+  --surface-soft: rgba(255, 232, 205, 0.08);
+  --grid-line: rgba(255, 232, 205, 0.035);
+
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  --shadow-soft: 0 16px 44px rgba(0, 0, 0, 0.26);
 }
+
+
+/* =========================================================
+   2. Reset & Global Styles
+   ========================================================= */
 
 * {
   margin: 0;
@@ -45,16 +77,24 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 120px;
 }
 
 body {
+  min-height: 100vh;
+  color: var(--text);
   font-family: Georgia, "Times New Roman", serif;
   background:
     radial-gradient(circle at top left, rgba(200, 155, 99, 0.28), transparent 34%),
     radial-gradient(circle at top right, rgba(154, 106, 58, 0.18), transparent 32%),
-    linear-gradient(180deg, #fbf7f0 0%, var(--bg) 42%, #efe2d0 100%);
-  color: var(--text);
-  min-height: 100vh;
+    linear-gradient(180deg, var(--page-start) 0%, var(--bg) 42%, var(--page-end) 100%);
+}
+
+.dark-theme body {
+  background:
+    radial-gradient(circle at top left, rgba(212, 163, 115, 0.18), transparent 34%),
+    radial-gradient(circle at top right, rgba(184, 138, 93, 0.14), transparent 32%),
+    linear-gradient(180deg, var(--page-start) 0%, var(--bg) 48%, var(--page-end) 100%);
 }
 
 body::before {
@@ -63,8 +103,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(92, 64, 43, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(92, 64, 43, 0.035) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: linear-gradient(to bottom, black, transparent 75%);
 }
@@ -74,21 +114,34 @@ a {
   text-decoration: none;
 }
 
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   3. Navbar
+   ========================================================= */
+
 .navbar {
   width: min(1120px, calc(100% - 32px));
   margin: 20px auto 0;
   padding: 14px 16px;
   border: 1px solid var(--card-border);
-  background: rgba(255, 252, 247, 0.78);
+  background: var(--card);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 999px;
-  display: flex;
+
+  display: grid;
+  grid-template-columns: 82px 1fr auto;
   align-items: center;
-  justify-content: space-between;
+
   position: sticky;
   top: 16px;
   z-index: 20;
-  box-shadow: 0 16px 44px rgba(92, 64, 43, 0.12);
+  box-shadow: var(--shadow-soft);
 }
 
 .logo {
@@ -97,48 +150,282 @@ a {
   border-radius: 50%;
   background:
     linear-gradient(135deg, rgba(154, 106, 58, 0.14), rgba(200, 155, 99, 0.24)),
-    #fffaf3;
-  border: 1px solid rgba(154, 106, 58, 0.22);
+    var(--surface);
+  border: 1px solid var(--card-border);
   display: grid;
   place-items: center;
+  justify-self: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 900;
   color: var(--primary-dark);
   letter-spacing: -0.04em;
 }
 
-.navbar nav {
-  display: flex;
-  gap: 26px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+/* Keep navbar layout stable even in Hebrew mode */
+
+.navbar {
+  direction: ltr;
 }
 
-.navbar nav a {
-  color: var(--muted);
-  font-size: 0.92rem;
-  font-weight: 650;
-  transition: 0.2s ease;
+.right-controls {
+  direction: ltr;
 }
 
-.navbar nav a:hover {
-  color: var(--primary-dark);
+.menu-wrapper {
+  direction: ltr;
 }
+
+.popup-menu {
+  right: 0;
+  left: auto;
+  text-align: left;
+}
+
+/* When Hebrew mode is active, only the popup text becomes RTL */
+.he-mode .popup-menu {
+  right: 0;
+  left: auto;
+  direction: rtl;
+  text-align: right;
+}
+
+/* =========================================================
+   4. Theme Toggle
+   ========================================================= */
 
 .theme-toggle {
-  width: 46px;
+  width: 82px;
   height: 46px;
-  border: 1px solid rgba(154, 106, 58, 0.18);
-  border-radius: 50%;
-  background: #fffaf3;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  background: var(--surface-soft);
   color: var(--primary-dark);
   cursor: pointer;
   box-shadow: 0 10px 24px rgba(92, 64, 43, 0.1);
+  transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  justify-self: start;
 }
 
-main {
-  width: min(1120px, calc(100% - 32px));
-  margin: 0 auto;
+.toggle-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
 }
+
+.toggle-track::before,
+.toggle-track::after {
+  content: none;
+}
+
+.toggle-thumb {
+  position: absolute;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 18px rgba(92, 64, 43, 0.16);
+  transform: translateX(0);
+  transition: transform 0.25s ease, background 0.25s ease;
+  z-index: 1;
+}
+
+body:not(.dark-theme) .toggle-thumb {
+  transform: translateX(36px);
+}
+
+.dark-theme .toggle-thumb {
+  transform: translateX(0);
+}
+
+.theme-icon {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  transition: 0.25s ease;
+  pointer-events: none;
+}
+
+.moon-icon,
+.sun-icon {
+  color: var(--primary-dark);
+  opacity: 0.35;
+  transform: scale(0.9);
+}
+
+body:not(.dark-theme) .sun-icon {
+  opacity: 1;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 1px currentColor);
+}
+
+body:not(.dark-theme) .moon-icon {
+  opacity: 0.35;
+  transform: scale(0.9);
+}
+
+.dark-theme .moon-icon {
+  opacity: 1;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 1px currentColor);
+}
+
+.dark-theme .sun-icon {
+  opacity: 0.35;
+  transform: scale(0.9);
+}
+
+/* Right controls: language + menu */
+
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-self: end;
+}
+
+.language-toggle {
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--primary-dark);
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(92, 64, 43, 0.1);
+  transition: 0.2s ease;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 850;
+}
+
+.language-toggle:hover {
+  transform: translateY(-2px);
+}
+
+.lang-divider {
+  opacity: 0.38;
+}
+
+.lang-en,
+.lang-he {
+  transition: 0.2s ease;
+}
+
+/* Default: English active */
+body:not(.he-mode) .lang-en {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+body:not(.he-mode) .lang-he {
+  opacity: 0.42;
+}
+
+/* Hebrew active */
+.he-mode .lang-he {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.he-mode .lang-en {
+  opacity: 0.42;
+}
+
+/* =========================================================
+   5. Popup Menu
+   ========================================================= */
+
+.menu-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle {
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--card-border);
+  border-radius: 50%;
+  background: var(--surface-soft);
+  color: var(--primary-dark);
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(92, 64, 43, 0.1);
+  transition: 0.2s ease;
+  display: grid;
+  place-items: center;
+  font-size: 1.05rem;
+}
+
+.theme-toggle:hover,
+.menu-toggle:hover {
+  transform: translateY(-2px);
+}
+
+.popup-menu {
+  position: absolute;
+  top: 58px;
+  right: 0;
+  width: 230px;
+  padding: 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 22px;
+  background: var(--card-strong);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 6px;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px) scale(0.98);
+  transition: 0.2s ease;
+  z-index: 999;
+}
+
+.popup-menu.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.popup-menu a {
+  padding: 12px 14px;
+  border-radius: 14px;
+  color: var(--muted);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.94rem;
+  font-weight: 750;
+  transition: 0.2s ease;
+}
+
+.popup-menu a:hover {
+  background: var(--surface-soft);
+  color: var(--primary-dark);
+}
+
+
+/* =========================================================
+   6. Hero Section
+   ========================================================= */
 
 .hero {
   min-height: calc(100vh - 96px);
@@ -152,9 +439,9 @@ main {
 .eyebrow {
   width: fit-content;
   padding: 9px 14px;
-  border: 1px solid rgba(154, 106, 58, 0.16);
+  border: 1px solid var(--card-border);
   border-radius: 999px;
-  background: rgba(255, 252, 247, 0.68);
+  background: var(--surface-soft);
   color: var(--primary-dark);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.78rem;
@@ -175,7 +462,9 @@ main {
 .hero h1 span {
   background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
+  white-space: nowrap;
 }
 
 .hero-text {
@@ -185,6 +474,11 @@ main {
   line-height: 1.85;
   max-width: 650px;
 }
+
+
+/* =========================================================
+   7. Buttons
+   ========================================================= */
 
 .hero-actions,
 .contact-actions {
@@ -203,6 +497,7 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 9px;
 }
 
 .btn.primary {
@@ -211,15 +506,24 @@ main {
   box-shadow: 0 16px 34px rgba(111, 72, 39, 0.22);
 }
 
+.dark-theme .btn.primary {
+  color: #17120f;
+}
+
 .btn.secondary {
-  border: 1px solid rgba(154, 106, 58, 0.18);
-  background: rgba(255, 252, 247, 0.72);
+  border: 1px solid var(--card-border);
+  background: var(--surface-soft);
   color: var(--primary-dark);
 }
 
 .btn:hover {
   transform: translateY(-3px);
 }
+
+
+/* =========================================================
+   8. Social Links
+   ========================================================= */
 
 .social-links {
   display: flex;
@@ -228,22 +532,31 @@ main {
 }
 
 .social-links a {
-  width: 46px;
-  height: 46px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: rgba(255, 252, 247, 0.74);
-  border: 1px solid rgba(154, 106, 58, 0.16);
+  background: var(--surface-soft);
+  border: 2px solid var(--card-border);
   color: var(--primary-dark);
   transition: 0.22s ease;
   box-shadow: 0 12px 28px rgba(92, 64, 43, 0.08);
 }
 
+.social-links a i {
+  font-size: 1.35rem;
+}
+
 .social-links a:hover {
-  background: #fffaf3;
+  background: var(--surface);
   transform: translateY(-3px);
 }
+
+
+/* =========================================================
+   9. Cards & Profile Photo
+   ========================================================= */
 
 .hero-card,
 .glass-card,
@@ -252,6 +565,7 @@ main {
   border: 1px solid var(--card-border);
   background: var(--card);
   backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow);
 }
@@ -268,21 +582,22 @@ main {
   position: absolute;
   inset: 16px;
   border-radius: 28px;
-  border: 1px solid rgba(154, 106, 58, 0.12);
+  border: 1px solid var(--card-border);
   pointer-events: none;
 }
 
 .profile-circle {
-  width: 144px;
-  height: 144px;
+  width: 220px;
+  height: 220px;
   margin: 8px auto 26px;
   border-radius: 50%;
   background:
-    linear-gradient(#fffaf3, #fffaf3) padding-box,
+    linear-gradient(var(--surface), var(--surface)) padding-box,
     linear-gradient(135deg, var(--primary-dark), var(--secondary)) border-box;
   border: 3px solid transparent;
   display: grid;
   place-items: center;
+  overflow: hidden;
   box-shadow:
     inset 0 0 0 8px rgba(200, 155, 99, 0.08),
     0 18px 40px rgba(92, 64, 43, 0.13);
@@ -294,6 +609,13 @@ main {
   font-weight: 900;
   color: var(--primary-dark);
   letter-spacing: -0.06em;
+}
+
+.profile-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .hero-card h2 {
@@ -312,7 +634,7 @@ main {
   padding: 11px 15px;
   border-radius: 999px;
   background: rgba(111, 143, 114, 0.14);
-  color: #4f7653;
+  color: var(--accent);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 800;
   display: flex;
@@ -320,15 +642,31 @@ main {
   gap: 8px;
 }
 
-.status-badge span {
+.status-badge span:first-child {
+  flex: 0 0 9px;
   width: 9px;
   height: 9px;
-  background: #5f8f63;
+  background: var(--accent);
   border-radius: 50%;
 }
 
+.status-badge span:last-child {
+  width: auto;
+  height: auto;
+  background: transparent;
+  border-radius: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   10. Section Layout
+   ========================================================= */
+
 .section {
   padding: 72px 0;
+  scroll-margin-top: 120px;
 }
 
 .section-title {
@@ -363,6 +701,11 @@ main {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+
+/* =========================================================
+   11. Projects
+   ========================================================= */
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -372,12 +715,12 @@ main {
 .project-card {
   padding: 28px;
   transition: 0.24s ease;
-  background: rgba(255, 252, 247, 0.74);
+  background: var(--surface-soft);
 }
 
 .project-card:hover {
   transform: translateY(-7px);
-  background: rgba(255, 252, 247, 0.94);
+  background: var(--card-strong);
 }
 
 .project-icon {
@@ -386,7 +729,7 @@ main {
   border-radius: 19px;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, rgba(154, 106, 58, 0.9), rgba(200, 155, 99, 0.9));
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: #fffaf3;
   font-size: 1.35rem;
   margin-bottom: 24px;
@@ -422,11 +765,39 @@ main {
   font-weight: 800;
 }
 
+.dark-theme .tags span {
+  background: rgba(255, 232, 205, 0.08);
+}
+
 .project-link {
   color: var(--primary-dark);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 900;
 }
+
+.project-status {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: rgba(111, 143, 114, 0.14);
+  color: var(--accent);
+  border: 1px solid rgba(111, 143, 114, 0.18);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 850;
+}
+
+.project-status i {
+  font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   12. Skills
+   ========================================================= */
 
 .skills-grid {
   display: flex;
@@ -437,16 +808,73 @@ main {
 .skill {
   padding: 13px 18px;
   border-radius: 999px;
-  background: rgba(255, 252, 247, 0.72);
-  border: 1px solid rgba(154, 106, 58, 0.16);
+  background: var(--surface-soft);
+  border: 1px solid var(--card-border);
   color: var(--primary-dark);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 800;
   box-shadow: 0 10px 26px rgba(92, 64, 43, 0.07);
 }
 
+
+/* =========================================================
+   13. Development Environment / Tools
+   ========================================================= */
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.tool-card {
+  padding: 28px;
+  border: 1px solid var(--card-border);
+  background: var(--surface-soft);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  transition: 0.24s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-6px);
+  background: var(--card-strong);
+}
+
+.tool-card i {
+  width: 56px;
+  height: 56px;
+  border-radius: 19px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fffaf3;
+  font-size: 1.35rem;
+  margin-bottom: 22px;
+  box-shadow: 0 16px 30px rgba(111, 72, 39, 0.18);
+}
+
+.tool-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+}
+
+.tool-card p {
+  color: var(--muted);
+  line-height: 1.75;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+
+/* =========================================================
+   14. Education Timeline
+   ========================================================= */
+
 .timeline {
-  border-left: 2px solid rgba(154, 106, 58, 0.18);
+  border-left: 2px solid var(--card-border);
   padding-left: 24px;
 }
 
@@ -465,7 +893,9 @@ main {
 }
 
 .timeline h3 {
-  margin-bottom: 8px;
+  margin-bottom: 3px;
+  color: var(--primary);
+  font-size: 1.5rem;
 }
 
 .timeline p {
@@ -475,9 +905,99 @@ main {
 .timeline small {
   display: block;
   margin-top: 8px;
+  width: fit-content;
+  padding: 1px 11px;
+  border-radius: 999px;
+  background: rgba(154, 106, 58, 0.1);
+  color: var(--primary-dark);
+  border: 1px solid rgba(154, 106, 58, 0.16);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 850;
+}
+
+
+/* =========================================================
+   15. Experience Sections
+   ========================================================= */
+
+.experience-card {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 22px;
+  padding: 30px;
+  border: 1px solid var(--card-border);
+  background: var(--surface-soft);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  transition: 0.24s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-6px);
+  background: var(--card-strong);
+}
+
+.experience-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fffaf3;
+  font-size: 1.35rem;
+  box-shadow: 0 16px 30px rgba(111, 72, 39, 0.18);
+}
+
+.experience-years {
+  width: fit-content;
+  display: inline-flex;
+  margin-bottom: 14px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(154, 106, 58, 0.1);
+  color: var(--primary-dark);
+  border: 1px solid rgba(154, 106, 58, 0.16);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 850;
+}
+
+.dark-theme .experience-years {
+  background: rgba(255, 232, 205, 0.08);
+  border-color: rgba(255, 232, 205, 0.14);
+}
+
+.experience-summary {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.experience-list {
+  display: grid;
+  gap: 10px;
+  padding-left: 20px;
   color: var(--muted);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.65;
 }
+
+.experience-list li::marker {
+  color: var(--primary-dark);
+}
+
+
+/* =========================================================
+   16. Contact
+   ========================================================= */
 
 .contact-section {
   padding-bottom: 90px;
@@ -486,7 +1006,7 @@ main {
 .contact-card {
   padding: 36px;
   background:
-    linear-gradient(135deg, rgba(255, 252, 247, 0.9), rgba(239, 226, 208, 0.72));
+    linear-gradient(135deg, var(--card-strong), var(--card));
 }
 
 .contact-card p {
@@ -494,19 +1014,118 @@ main {
   line-height: 1.8;
 }
 
+.contact-actions {
+  gap: 14px;
+}
+
+.contact-btn {
+  color: #fffaf3;
+  border: 1px solid transparent;
+  box-shadow: 0 16px 34px rgba(111, 72, 39, 0.16);
+}
+
+.email-btn {
+  background: linear-gradient(135deg, #9a6a3a, #c89b63);
+}
+
+.github-btn {
+  background: linear-gradient(135deg, #24292f, #57606a);
+}
+
+.linkedin-btn {
+  background: linear-gradient(135deg, #0a66c2, #4a90d9);
+}
+
+.contact-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.05);
+}
+
+.dark-theme .contact-btn {
+  color: #fff7ed;
+}
+
+.dark-theme .email-btn {
+  background: linear-gradient(135deg, #d4a373, #9a6a3a);
+}
+
+.dark-theme .github-btn {
+  background: linear-gradient(135deg, #30363d, #161b22);
+}
+
+.dark-theme .linkedin-btn {
+  background: linear-gradient(135deg, #0a66c2, #084b91);
+}
+
+
+/* =========================================================
+   17. Footer
+   ========================================================= */
+
 footer {
   padding: 28px;
   text-align: center;
   color: var(--muted);
-  border-top: 1px solid rgba(154, 106, 58, 0.13);
+  border-top: 1px solid var(--card-border);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+
+/* =========================================================
+   18. Responsive Design
+   ========================================================= */
+
+/* Medium screens */
+@media (max-width: 1050px) {
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-card {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 18px;
+    row-gap: 6px;
+    align-items: center;
+    padding: 24px;
+  }
+
+  .tool-card i {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 0;
+    justify-self: start;
+  }
+
+  .tool-card h3 {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 0;
+    align-self: end;
+  }
+
+  .tool-card p {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+  }
+}
+
+/* Mobile screens */
 @media (max-width: 850px) {
   body {
     background:
       radial-gradient(circle at top left, rgba(200, 155, 99, 0.32), transparent 42%),
-      linear-gradient(180deg, #fbf7f0 0%, #f7f1e8 55%, #efe2d0 100%);
+      linear-gradient(180deg, var(--page-start) 0%, var(--bg) 55%, var(--page-end) 100%);
+  }
+
+  .dark-theme body {
+    background:
+      radial-gradient(circle at top left, rgba(212, 163, 115, 0.18), transparent 42%),
+      linear-gradient(180deg, var(--page-start) 0%, var(--bg) 55%, var(--page-end) 100%);
   }
 
   .navbar {
@@ -516,8 +1135,8 @@ footer {
     border-radius: 28px;
   }
 
-  .navbar nav {
-    display: none;
+  .popup-menu {
+    width: min(260px, calc(100vw - 40px));
   }
 
   main {
@@ -531,19 +1150,23 @@ footer {
     padding: 46px 0 44px;
   }
 
+  .hero-content {
+    order: 1;
+  }
+
   .hero-card {
     order: 2;
     padding: 28px 22px;
     border-radius: 30px;
   }
 
-  .hero-content {
-    order: 1;
+  .hero h1 {
+    font-size: clamp(3rem, 13vw, 4.4rem);
+    margin-bottom: 20px;
   }
 
-  .hero h1 {
-    font-size: clamp(3.3rem, 15vw, 4.8rem);
-    margin-bottom: 20px;
+  .hero h1 span {
+    white-space: normal;
   }
 
   .hero-text {
@@ -552,19 +1175,33 @@ footer {
   }
 
   .hero-actions {
-    position: static;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
     margin-top: 26px;
+  }
+
+  .hero-actions .btn.primary {
+    grid-column: 1 / -1;
+  }
+
+  .hero-actions .btn.secondary {
+    width: 100%;
+    padding-inline: 12px;
+    font-size: 0.95rem;
   }
 
   .btn {
     width: 100%;
   }
 
+  .social-links {
+    justify-content: center;
+  }
+
   .profile-circle {
-    width: 118px;
-    height: 118px;
+    width: 190px;
+    height: 190px;
     margin-bottom: 20px;
   }
 
@@ -580,6 +1217,17 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .experience-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 26px;
+  }
+
+  .experience-icon {
+    width: 56px;
+    height: 56px;
+  }
+
   .section {
     padding: 52px 0;
   }
@@ -587,4 +1235,264 @@ footer {
   .section-title h2 {
     font-size: 2.25rem;
   }
+}
+
+/* Mobile screens */
+@media (max-width: 850px) {
+  .navbar {
+    grid-template-columns: 76px 1fr auto;
+    gap: 10px;
+  }
+
+  .right-controls {
+    gap: 8px;
+  }
+
+  .language-toggle {
+    height: 42px;
+    padding: 0 11px;
+    font-size: 0.78rem;
+  }
+
+  .theme-toggle {
+    width: 76px;
+    height: 42px;
+  }
+
+  .menu-toggle {
+    width: 42px;
+    height: 42px;
+  }
+
+  .toggle-thumb {
+    width: 32px;
+    height: 32px;
+  }
+
+  body:not(.dark-theme) .toggle-thumb {
+    transform: translateX(34px);
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 430px) {
+  .hero-actions .btn.secondary {
+    font-size: 0.86rem;
+    padding-inline: 10px;
+  }
+
+  .tool-card {
+    grid-template-columns: 62px 1fr;
+    column-gap: 14px;
+  }
+
+  .tool-card i {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* =========================================================
+   Hebrew / RTL Content Mode
+   ========================================================= */
+
+/* Keep navbar stable */
+.navbar,
+.right-controls,
+.menu-wrapper,
+.theme-toggle,
+.language-toggle,
+.popup-menu {
+  direction: ltr;
+}
+
+/* Popup text in Hebrew mode */
+.he-mode .popup-menu {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Main page content becomes RTL */
+.he-mode main {
+  direction: rtl;
+}
+
+/* Text alignment for Hebrew content */
+.he-mode .hero-content,
+.he-mode .section-title,
+.he-mode .glass-card,
+.he-mode .project-card,
+.he-mode .tool-card,
+.he-mode .experience-content,
+.he-mode .contact-card {
+  text-align: right;
+}
+
+/* Keep hero card centered */
+.he-mode .hero-card {
+  text-align: center;
+}
+
+/* Make pills/tags flow correctly in Hebrew */
+.he-mode .tags,
+.he-mode .skills-grid,
+.he-mode .hero-actions,
+.he-mode .contact-actions,
+.he-mode .social-links {
+  direction: rtl;
+}
+
+/* Bullets on the correct side in Hebrew */
+.he-mode .experience-list {
+  direction: rtl;
+  padding-right: 20px;
+  padding-left: 0;
+}
+
+/* Timeline direction correction */
+.he-mode .timeline {
+  border-left: none;
+  border-right: 2px solid var(--card-border);
+  padding-left: 0;
+  padding-right: 24px;
+}
+
+.he-mode .timeline-dot {
+  left: auto;
+  right: -33px;
+}
+
+/* Fix hero status badge in Hebrew mode */
+
+.status-badge {
+  min-width: fit-content;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.status-badge span:first-child {
+  flex: 0 0 9px;
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.status-badge span:last-child {
+  width: auto;
+  height: auto;
+  background: transparent;
+  border-radius: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.he-mode .status-badge {
+  direction: rtl;
+  padding-inline: 16px;
+}
+
+.hero-intro {
+  color: var(--text);
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+}
+
+.hero-name {
+  background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* =========================================================
+   Hebrew Typography Improvements
+   ========================================================= */
+
+.he-mode main,
+.he-mode .popup-menu,
+.he-mode .btn,
+.he-mode .skill,
+.he-mode .tags span,
+.he-mode .project-status,
+.he-mode .project-link,
+.he-mode .status-badge,
+.he-mode .experience-list,
+.he-mode .contact-card p,
+.he-mode .tool-card p,
+.he-mode .project-card p,
+.he-mode .glass-card p {
+  font-family: "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Section headings in Hebrew */
+.he-mode .section-title p {
+  font-family: "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.he-mode .section-title h2 {
+  font-family: "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* Hero title in Hebrew */
+.he-mode .hero h1 {
+  font-family: "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(3.3rem, 7vw, 6.2rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+/* Hero paragraph in Hebrew */
+.he-mode .hero-text {
+  font-family: "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.22rem;
+  line-height: 1.85;
+  font-weight: 500;
+}
+
+/* Hero card title in Hebrew */
+.he-mode .hero-card h2 {
+  font-family: "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+/* Experience summary in Hebrew */
+.he-mode .experience-summary {
+  font-family: "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.22rem;
+  font-weight: 600;
+  line-height: 1.75;
+}
+
+/* Card titles in Hebrew */
+.he-mode .project-card h3,
+.he-mode .tool-card h3,
+.he-mode .timeline h3,
+.he-mode .experience-card h3 {
+  font-family: "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+/* Better Hebrew text spacing in cards */
+.he-mode .glass-card,
+.he-mode .project-card,
+.he-mode .tool-card,
+.he-mode .experience-card,
+.he-mode .contact-card {
+  line-height: 1.75;
 }
