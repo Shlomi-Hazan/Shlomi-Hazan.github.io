@@ -67,10 +67,101 @@ A Python TCP/IP networking project combining packet analysis, client-server arch
 
 A Machine Learning project for classifying AI-generated and real images using KNN from scratch and feature engineering.
 
-## Resume Support
+## Folder Structure
 
-The website supports two resume files:
+```text
+Shlomi-Hazan.github.io/
+├── index.html
+├── style.css
+├── script.js
+├── README.md
+└── assets/
+    ├── profile.jpg
+    ├── resume-en.pdf
+    └── resume-he.pdf
+```
+
+## Local Development
+
+To run the website locally:
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Shlomi-Hazan/Shlomi-Hazan.github.io.git
+```
+
+2. Open the project folder:
+
+```bash
+cd Shlomi-Hazan.github.io
+```
+
+3. Open the project in VS Code:
+
+```bash
+code .
+```
+
+4. Use the **Live Server** extension to preview the website locally.
+
+The local development URL will usually look like:
+
+```text
+http://127.0.0.1:5500/
+```
+
+## Deployment
+
+The website is deployed using GitHub Pages from the main branch.
+
+After making changes locally, use:
+
+```bash
+git status
+git add .
+git commit -m "Update portfolio website"
+git push
+```
+
+GitHub Pages will automatically rebuild and publish the updated website.
+
+## Resume Files
+
+The website includes separate resume files for English and Hebrew:
 
 ```text
 assets/resume-en.pdf
 assets/resume-he.pdf
+```
+
+The resume buttons automatically switch between the English and Hebrew versions according to the selected language.
+
+## Notes
+
+The website supports both English and Hebrew content.
+
+Hebrew mode includes RTL support for the main content.
+
+The navigation bar remains stable in both languages.
+
+The light/dark theme preference is saved in the browser using localStorage.
+
+The selected language is also saved using localStorage.
+
+The project is built as a static website, with no backend required.
+
+## Contact
+
+- GitHub: [Shlomi-Hazan](https://github.com/Shlomi-Hazan)
+- LinkedIn: [Shlomi Hazan](https://www.linkedin.com/in/shlomi-hazan-in)
+- Email: [shlomih2806@gmail.com](mailto:shlomih2806@gmail.com)
+
+## Author
+
+**Shlomi Hazan**  
+Computer Science Student | Software Developer
+
+
+
+
