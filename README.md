@@ -127,6 +127,68 @@ The website is organized into the following sections:
 
 ## Projects Featured 🚀
 
+### The Tribunal ⚖️
+
+An AI courtroom for everyday disagreements: four AI advocates argue for and against, three AI judges vote independently, and deterministic code decides the verdict, with full token and cost tracking.
+
+Main technologies:
+
+- React
+- TypeScript
+- LLMs
+- Supabase
+
+Live app:  
+[ase26-the-tribunal.netlify.app](https://ase26-the-tribunal.netlify.app)
+
+Repository:  
+[ase26-the-tribunal](https://github.com/Shlomi-Hazan/ase26-the-tribunal)
+
+---
+
+### Vinyl Intelligence 🎶
+
+An AI-powered personal vinyl collection app. Search and organize your records, scan a cover to identify an album, and ask an AI curator what to play next, chosen only from records you own.
+
+Main technologies:
+
+- React
+- TypeScript
+- Supabase
+- AI Vision
+
+Live app:  
+[vinyl-intelligence.netlify.app](https://vinyl-intelligence.netlify.app)
+
+Repository:  
+[vinyl-intelligence](https://github.com/Shlomi-Hazan/vinyl-intelligence)
+
+---
+
+### Cost Manager Pro 💰
+
+A local-first expense manager with multi-currency tracking, monthly and yearly reports, charts, and Excel/PDF export. Started as a two-person university project; I now lead its independent development.
+
+Status: **In Progress**
+
+Main technologies:
+
+- React
+- Vite
+- MUI
+- Vitest
+
+Live app:  
+[cost-manager-pro.vercel.app](https://cost-manager-pro.vercel.app)
+
+Repository:  
+[cost-manager-pro](https://github.com/Shlomi-Hazan/cost-manager-pro)
+
+Original university project:  
+[cost-manager-front-end](https://github.com/Shlomi-Hazan/cost-manager-front-end)
+
+---
+
 ### DogNeeds 🐶
 
 A SwiftUI iOS application for managing dog care, family sharing, emergency contacts, walks, updates, reminders, and more.
